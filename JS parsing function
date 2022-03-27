@@ -1,0 +1,25 @@
+let quoteParser = function([string]) {
+  let digits = /\s*[0-9]+.\s/;
+  let quoteProp = "quote";
+  let authReg = /\s-/;
+  let authorProp = "author";
+
+  let objArr = [];
+  let arr = string.split(digits)
+
+  for (let i=0; i < arr.length; i++) {
+    let chunk = arr[i].split(authReg);
+    objArr.push(chunk);
+  }
+
+  let lastArr = []
+  for (let n=1; n < objArr.length; n++) {
+      lastArr.push({
+        'quote': objArr[n][0],
+        'author': objArr[n][1]
+      })
+  }
+  console.log(lastArr)
+}
+
+quoteParser(['1. "Spread love everywhere you go. Let no one ever come to you without leaving happier." -Mother Teresa 2. "When you reach the end of your rope, tie a knot in it and hang on." -Franklin D. Roosevelt 3. "Always remember that you are absolutely unique. Just like everyone else." -Margaret Mead'])
